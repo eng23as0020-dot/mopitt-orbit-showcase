@@ -1,12 +1,15 @@
 import { useState, useMemo } from "react";
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { Calendar, TrendingUp, Wind, Activity } from "lucide-react";
+import { Calendar, TrendingUp, Wind, Activity, AlertTriangle, Leaf, Factory, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import terraData from "@/assets/terra_data.csv?raw";
+import mopittImg from "@/assets/mopitt-instrument.jpg";
+import coPollutionImg from "@/assets/co-pollution.jpg";
 
 interface DataPoint {
   date: string;
@@ -97,17 +100,58 @@ const Mopitt = () => {
         </Button>
 
         <div className="mb-8 animate-fade-in">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
-            MOPITT
-          </h1>
-          <p className="text-xl text-muted-foreground mb-2">
-            Measurements of Pollution in the Troposphere
-          </p>
-          <p className="text-foreground/80 max-w-3xl">
-            MOPITT is a Canadian instrument aboard Terra that measures carbon monoxide (CO) pollution in the troposphere. 
-            It uses gas correlation spectroscopy to detect CO concentrations, helping scientists understand pollution transport 
-            and its impact on air quality across the Indo-Gangetic Plain region.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h1 className="text-5xl font-bold mb-4 bg-gradient-accent bg-clip-text text-transparent">
+                MOPITT
+              </h1>
+              <p className="text-xl text-muted-foreground mb-4">
+                Measurements of Pollution in the Troposphere
+              </p>
+              <p className="text-foreground/80 mb-4 leading-relaxed">
+                MOPITT is a Canadian instrument aboard Terra that measures carbon monoxide (CO) pollution in the troposphere. 
+                It uses gas correlation spectroscopy to detect CO concentrations, helping scientists understand pollution transport 
+                and its impact on air quality across the Indo-Gangetic Plain region.
+              </p>
+              <div className="space-y-2 text-sm text-foreground/70">
+                <div className="flex items-start gap-2">
+                  <div className="h-2 w-2 bg-primary rounded-full mt-1.5" />
+                  <span><strong>Launch:</strong> December 18, 1999</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="h-2 w-2 bg-primary rounded-full mt-1.5" />
+                  <span><strong>Origin:</strong> Canadian Space Agency & University of Toronto</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="h-2 w-2 bg-primary rounded-full mt-1.5" />
+                  <span><strong>Technology:</strong> Gas Correlation Spectroscopy</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="h-2 w-2 bg-primary rounded-full mt-1.5" />
+                  <span><strong>Coverage:</strong> Global measurements every 3 days</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative rounded-lg overflow-hidden border border-primary/30 shadow-[var(--glow-primary)]">
+              <img 
+                src={mopittImg} 
+                alt="MOPITT Instrument"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/80 to-transparent p-4">
+                <p className="text-xs text-muted-foreground">MOPITT Instrument on Terra Satellite</p>
+              </div>
+            </div>
+          </div>
+
+          <Alert className="mb-6 border-accent/50 bg-accent/10">
+            <AlertTriangle className="h-5 w-5 text-accent" />
+            <AlertTitle className="text-accent">Critical Environmental Monitoring</AlertTitle>
+            <AlertDescription className="text-foreground/80">
+              MOPITT provides essential data for tracking air pollution patterns, supporting public health initiatives, 
+              and informing climate policy decisions worldwide.
+            </AlertDescription>
+          </Alert>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
@@ -197,7 +241,162 @@ const Mopitt = () => {
           </CardContent>
         </Card>
 
-        <div className="space-y-8">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 text-primary">CO Impact on Environment</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <Card className="bg-card/50 backdrop-blur border-destructive/30 overflow-hidden">
+              <div className="relative h-48">
+                <img 
+                  src={coPollutionImg} 
+                  alt="CO Pollution"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+              </div>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-destructive">
+                  <Factory className="h-5 w-5" />
+                  Sources of CO Pollution
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-foreground/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Vehicle Emissions:</strong> Primary source in urban areas from incomplete combustion</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Industrial Processes:</strong> Manufacturing and fossil fuel burning</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Biomass Burning:</strong> Forest fires and agricultural burning</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Residential Heating:</strong> Wood and coal combustion in homes</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card/50 backdrop-blur border-destructive/30">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-destructive">
+                  <Heart className="h-5 w-5" />
+                  Health Impacts
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-foreground/80 mb-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Oxygen Depletion:</strong> CO binds to hemoglobin, reducing oxygen delivery to organs</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Cardiovascular Stress:</strong> Increased risk for heart disease and stroke</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Neurological Effects:</strong> Headaches, dizziness, cognitive impairment</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-destructive">•</span>
+                    <span><strong>Vulnerable Groups:</strong> Children, elderly, and those with respiratory conditions</span>
+                  </li>
+                </ul>
+                <Alert className="border-destructive/40 bg-destructive/10">
+                  <AlertDescription className="text-sm">
+                    High CO exposure can be fatal. The Indo-Gangetic Plain experiences some of the world's highest CO concentrations.
+                  </AlertDescription>
+                </Alert>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="bg-card/50 backdrop-blur border-secondary/30 mb-8">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-secondary">
+                <Leaf className="h-5 w-5" />
+                Environmental & Climate Effects
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Atmospheric Chemistry</h4>
+                  <ul className="space-y-2 text-sm text-foreground/80">
+                    <li className="flex items-start gap-2">
+                      <span className="text-secondary">•</span>
+                      <span>Contributes to ground-level ozone formation through photochemical reactions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-secondary">•</span>
+                      <span>Affects hydroxyl radical (OH) concentrations, altering atmospheric oxidation</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-secondary">•</span>
+                      <span>Influences methane lifetime in the atmosphere</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">Climate Implications</h4>
+                  <ul className="space-y-2 text-sm text-foreground/80">
+                    <li className="flex items-start gap-2">
+                      <span className="text-secondary">•</span>
+                      <span>Acts as an indirect greenhouse gas by influencing ozone and methane</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-secondary">•</span>
+                      <span>Average atmospheric lifetime of 1-2 months allows for long-range transport</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-secondary">•</span>
+                      <span>Contributes to regional air quality degradation across continents</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/50 backdrop-blur border-primary/30">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-primary">
+                <TrendingUp className="h-5 w-5" />
+                Indo-Gangetic Plain: A Hotspot
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-foreground/80 mb-4 leading-relaxed">
+                The Indo-Gangetic Plain (IGP) spanning northern India, Pakistan, and Bangladesh is one of Earth's most polluted regions. 
+                MOPITT data reveals consistently elevated CO levels due to:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-background/50 p-4 rounded-lg border border-primary/20">
+                  <h5 className="font-semibold text-primary mb-2">High Population Density</h5>
+                  <p className="text-sm text-foreground/70">Over 900 million people generate massive vehicular and industrial emissions</p>
+                </div>
+                <div className="bg-background/50 p-4 rounded-lg border border-primary/20">
+                  <h5 className="font-semibold text-primary mb-2">Agricultural Burning</h5>
+                  <p className="text-sm text-foreground/70">Seasonal crop residue burning releases enormous CO quantities</p>
+                </div>
+                <div className="bg-background/50 p-4 rounded-lg border border-primary/20">
+                  <h5 className="font-semibold text-primary mb-2">Meteorological Trapping</h5>
+                  <p className="text-sm text-foreground/70">Himalayan mountains and atmospheric conditions trap pollutants</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="space-y-8 mt-12">
+          <h2 className="text-3xl font-bold text-primary">Interactive Data Visualization</h2>
+          
           <Card className="bg-card/50 backdrop-blur border-primary/20">
             <CardHeader>
               <CardTitle>Carbon Monoxide (CO) Concentration Over Time</CardTitle>

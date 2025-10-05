@@ -4,6 +4,12 @@ import { useNavigate } from "react-router-dom";
 import StarField from "@/components/StarField";
 import nasaLogo from "@/assets/nasa-logo.png";
 import terraHero from "@/assets/terra-hero.jpg";
+import mopittImg from "@/assets/mopitt-instrument.jpg";
+import asterImg from "@/assets/aster-instrument.jpg";
+import ceresImg from "@/assets/ceres-instrument.jpg";
+import misrImg from "@/assets/misr-instrument.jpg";
+import modisImg from "@/assets/modis-instrument.jpg";
+import tesImg from "@/assets/tes-instrument.jpg";
 
 const instruments = [
   {
@@ -12,6 +18,7 @@ const instruments = [
     description: "Monitors carbon monoxide pollution in Earth's troposphere using gas correlation spectroscopy.",
     route: "/mopitt",
     primary: true,
+    image: mopittImg,
   },
   {
     name: "ASTER",
@@ -19,6 +26,7 @@ const instruments = [
     description: "Captures high-resolution images in 14 spectral bands for detailed Earth surface studies.",
     route: "/aster",
     primary: true,
+    image: asterImg,
   },
   {
     name: "CERES",
@@ -26,6 +34,7 @@ const instruments = [
     description: "Measures Earth's radiation budget to understand climate and energy balance.",
     route: "/ceres",
     primary: false,
+    image: ceresImg,
   },
   {
     name: "MISR",
@@ -33,6 +42,7 @@ const instruments = [
     description: "Views Earth with nine cameras at different angles for unique 3D atmospheric data.",
     route: "/misr",
     primary: false,
+    image: misrImg,
   },
   {
     name: "MODIS",
@@ -40,6 +50,7 @@ const instruments = [
     description: "Provides daily global coverage in 36 spectral bands for comprehensive Earth monitoring.",
     route: "/modis",
     primary: false,
+    image: modisImg,
   },
   {
     name: "TES",
@@ -47,6 +58,7 @@ const instruments = [
     description: "Measured ozone and trace gases in the troposphere (2004-2018).",
     route: "/tes",
     primary: false,
+    image: tesImg,
   },
 ];
 
@@ -114,7 +126,7 @@ const Index = () => {
               .map((instrument, index) => (
                 <Card
                   key={instrument.name}
-                  className="bg-card/70 backdrop-blur-xl border-primary/40 hover:border-primary hover:shadow-[var(--glow-primary)] transition-all duration-500 cursor-pointer group animate-slide-up transform hover:scale-105 hover:-translate-y-2"
+                  className="bg-card/70 backdrop-blur-xl border-primary/40 hover:border-primary hover:shadow-[var(--glow-primary)] transition-all duration-500 cursor-pointer group animate-slide-up transform hover:scale-105 hover:-translate-y-2 overflow-hidden"
                   style={{ 
                     animationDelay: `${index * 0.15}s`,
                     transformStyle: "preserve-3d",
@@ -122,6 +134,14 @@ const Index = () => {
                   onClick={() => navigate(instrument.route)}
                 >
                   <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-opacity rounded-lg" />
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={instrument.image} 
+                      alt={instrument.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                  </div>
                   <CardHeader className="relative">
                     <CardTitle className="text-3xl text-primary group-hover:scale-110 transition-all duration-300 font-bold drop-shadow-lg">
                       {instrument.name}
@@ -156,11 +176,19 @@ const Index = () => {
               .map((instrument, index) => (
                 <Card
                   key={instrument.name}
-                  className="bg-card/60 backdrop-blur-lg border-secondary/40 hover:border-secondary hover:shadow-[var(--glow-secondary)] transition-all duration-500 cursor-pointer group animate-slide-up transform hover:scale-105 hover:-translate-y-1"
+                  className="bg-card/60 backdrop-blur-lg border-secondary/40 hover:border-secondary hover:shadow-[var(--glow-secondary)] transition-all duration-500 cursor-pointer group animate-slide-up transform hover:scale-105 hover:-translate-y-1 overflow-hidden"
                   style={{ animationDelay: `${(index + 2) * 0.12}s` }}
                   onClick={() => navigate(instrument.route)}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                  <div className="relative h-32 overflow-hidden">
+                    <img 
+                      src={instrument.image} 
+                      alt={instrument.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                  </div>
                   <CardHeader className="relative">
                     <CardTitle className="text-xl text-secondary group-hover:scale-110 transition-all duration-300 font-bold">
                       {instrument.name}
