@@ -8,25 +8,25 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
+    --background: 218 50% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 15%;
+    --card: 220 45% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 15%;
+    --popover: 220 45% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 189 95% 52%;
+    --primary: 217 91% 60%;
     --primary-foreground: 222 47% 11%;
 
-    --secondary: 262 52% 47%;
+    --secondary: 281 76% 62%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 27 96% 61%;
+    --accent: 11 91% 59%;
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
@@ -34,18 +34,20 @@ All colors MUST be HSL.
 
     --border: 217 33% 25%;
     --input: 217 33% 25%;
-    --ring: 189 95% 52%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    /* Space theme gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%), hsl(262 52% 20%));
-    --gradient-card: linear-gradient(135deg, hsl(222 47% 15% / 0.5), hsl(262 52% 20% / 0.3));
-    --gradient-accent: linear-gradient(90deg, hsl(189 95% 52%), hsl(262 52% 47%));
+    /* NASA-inspired gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(218 50% 8%), hsl(220 65% 18%), hsl(217 91% 60% / 0.1));
+    --gradient-card: linear-gradient(135deg, hsl(220 45% 12% / 0.8), hsl(281 76% 62% / 0.15));
+    --gradient-accent: linear-gradient(90deg, hsl(217 91% 60%), hsl(281 76% 62%), hsl(11 91% 59%));
+    --gradient-nasa: linear-gradient(135deg, hsl(217 91% 60%), hsl(220 50% 30%));
     
-    /* Glow effects */
-    --glow-primary: 0 0 20px hsl(189 95% 52% / 0.5);
-    --glow-secondary: 0 0 20px hsl(262 52% 47% / 0.5);
+    /* Enhanced glow effects */
+    --glow-primary: 0 0 30px hsl(217 91% 60% / 0.6), 0 0 60px hsl(217 91% 60% / 0.3);
+    --glow-secondary: 0 0 30px hsl(281 76% 62% / 0.6), 0 0 60px hsl(281 76% 62% / 0.3);
+    --glow-accent: 0 0 30px hsl(11 91% 59% / 0.6);
   }
 }
 

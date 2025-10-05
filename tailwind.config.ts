@@ -65,32 +65,36 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         "float": {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" },
         },
         "glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(189 95% 52% / 0.5)" },
-          "50%": { boxShadow: "0 0 40px hsl(189 95% 52% / 0.8)" },
+          "0%, 100%": { boxShadow: "0 0 30px hsl(217 91% 60% / 0.6)" },
+          "50%": { boxShadow: "0 0 60px hsl(217 91% 60% / 0.9)" },
         },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-up": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(217 91% 60% / 0.4)" },
+          "50%": { boxShadow: "0 0 40px hsl(217 91% 60% / 0.8), 0 0 80px hsl(217 91% 60% / 0.4)" },
+        },
+        "rotate-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
       animation: {
@@ -99,11 +103,18 @@ export default {
         "float": "float 6s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
         "fade-in": "fade-in 0.5s ease-out",
+        "slide-up": "slide-up 0.6s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "rotate-slow": "rotate-slow 20s linear infinite",
       },
       backgroundImage: {
         "gradient-hero": "var(--gradient-hero)",
         "gradient-card": "var(--gradient-card)",
         "gradient-accent": "var(--gradient-accent)",
+        "gradient-nasa": "var(--gradient-nasa)",
+      },
+      perspective: {
+        "1000": "1000px",
       },
     },
   },
